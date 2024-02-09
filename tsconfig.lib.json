@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "target": "ES2022", // o "es2021" u otro objetivo que admita `replaceAll`
+    "lib": ["ES2022", "dom"],
+    // ... otras configuraciones ...
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
+}

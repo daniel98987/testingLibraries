@@ -1,0 +1,38 @@
+<mat-dialog-content>
+  <mat-card [class]="resizable ? 'resizable' : ''">
+    <mat-card-title class="safe-mat-card-popup-custom">
+      <table style="width: 100%;">
+        <tr>
+          <td *ngIf="move" cdkDrag
+          cdkDragRootElement=".cdk-overlay-pane" 
+          cdkDragHandle cdkDragBoundary=".body-limit-cdk-drag" class="change-cursor">
+            <span class="safe-title-popup" *ngIf="data.title; else noTitle">
+              {{data.title}}
+            </span>
+            <ng-template #noTitle>
+              <span>
+                Consulta
+              </span>
+            </ng-template>
+          </td>
+          <td *ngIf="!move">
+            <span class="safe-title-popup" *ngIf="data.title; else noTitle">
+              {{data.title}}
+            </span>
+            <ng-template #noTitle>
+              <span>
+                Consulta
+              </span>
+            </ng-template>
+          </td>
+          <td class="close" style="width: 10%;">
+            <a class="safe-close-popup" data-dismiss="modal" (click)="close()"> X </a>
+          </td>
+        </tr>
+      </table>
+    </mat-card-title>
+    <mat-card-content [class]="resizable ? 'ref-content-resizable' : ''">
+      <ng-template #container></ng-template>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>

@@ -1,0 +1,31 @@
+<mat-dialog-content>
+  <mat-card>
+    <mat-card-title class="safe-mat-card-popup-confirm">
+      <span *ngIf="data.title; else noTitle">
+        {{data.title}}
+      </span>
+      <ng-template #noTitle>
+        <span>
+          Confirmación
+        </span>
+      </ng-template>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="col-12 safe-text-confirm">
+        {{data.body}}
+      </div>
+      <div class="flag d-flex justify-content-end">
+        <button [mat-dialog-close]="false" class="safe-button-secundary buttons-form safe-margin-buttons" mat-button
+          type="button">
+          {{data.labelCancel || 'Cancelar'}}
+        </button>
+        <button cdkFocusInitial [mat-dialog-close]="true" class="buttons-form safe-button-primary "
+          type="button" mat-button>
+          {{data.labelAccept ||
+          'Aceptar'}}
+        </button>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>

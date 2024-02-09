@@ -1,0 +1,26 @@
+name: Publish NPM Library
+on:
+  push:
+    branches: [feature/integration]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish-lib:
+    name: 🚀 Publish NPM Library
+    uses: davivienda-colombia/davi-coe-reusable-pipeline/.github/workflows/deploy_jfrog_lib.yml@v1.18.0
+    with:
+      environment: production
+      package-type: "npm"
+      repository-url: "https://davicienda.jfrog.io/artifactory/api/npm/npm-davi/"
+      auth-repository-url: "https://davicienda.jfrog.io/artifactory/api/npm/auth"
+      build-path: "dist"
+      package-json-path: "."
+      install-dependencies-command: npm install --ignore-scripts --registry=https://registry.npmjs.org/
+      build-command: npm run build
+    secrets:
+      TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+      ARTIFACTORY_WRITER_PASSWORD: ${{ secrets.ARTIFACTORY_WRITER_PASSWORD }}
+      ARTIFACTORY_WRITER_USER: ${{ secrets.ARTIFACTORY_WRITER_USER }}
